@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Portfolio</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: #111;
+            background: #fff;
+            overflow-x: hidden;
+        }
+
+        /* NAV */
+        header {
+            background: #e05c87;
+            padding: 14px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: #fff;
+            font-weight: 700;
+            line-height: 1.05;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 28px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* HERO */
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 56px 8%;
+            min-height: 94vh;
+            gap: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-text {
+            max-width: 56%;
+            text-align: left;
+        }
+
+        .hero-text h1 {
+            font-size: 3.2rem;
+            line-height: 1.02;
+            margin-bottom: 18px;
+            font-weight: 800;
+        }
+
+        .hero-text h1 span {
+            color: #d81b60;
+        }
+
+        .developer {
+            display: block;
+            margin-left: 170px;
+        }
+
+        .divider {
+            width: 78%;
+            height: 4px;
+            background: #000;
+            margin-bottom: 8px;
+        }
+
+        .hero-text p {
+            font-size: 1.05rem;
+            line-height: 1.75;
+            font-weight: 500;
+            color: #111;
+            max-width: 72%;
+            margin: 0;
+        }
+
+        .hero-image {
+            position: relative;
+            width: 420px;
+            height: 420px;
+            flex-shrink: 0;
+        }
+
+        .diamond {
+            width: 500px;
+            height: 500px;
+            background: linear-gradient(135deg, #d81b60, #8e24aa);
+            transform: rotate(45deg);
+            position: absolute;
+            top: 40px;
+            right: -40px;
+        }
+
+        .hero-image img {
+            position: absolute;
+            left: 80%;
+            transform: translateX(-50%);
+            width: 750px;
+            z-index: 2;
+        }
+
+        /* ABOUT */
+        .about {
+            display: flex;
+            justify-content: space-between;
+            padding-left: 8%;
+            padding-right: 0;
+            min-height: 500px;
+        }
+
+        .about-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .about-text h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .about-image {
+            margin-left: auto;
+        }
+
+        .about-image img {
+            width: 600px;
+            height: auto;
+            display: block;
+        }
+
+        /* SKILLS */
+        .skills {
+            background: #742b46;
+            padding: 80px 0;
+            min-height: 94vh;
+        }
+
+        .skills h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            padding-left: 150px;
+            margin-bottom: 40px;
+            color: #fff;
+        }
+
+        .skills-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch;
+            gap: 40px;
+        }
+
+        .skills-box {
+            background: #fff;
+            padding: 40px;
+            border-radius: 0 20px 20px 0;
+            flex: 1;
+        }
+
+        .skills-box.right {
+            border-radius: 20px 0 0 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .skills-box.right img {
+            width: 70%;
+            display: block;
+            margin: auto;
+        }
+
+        .SkillsText {
+            display: flex;
+            align-items: center; 
+            justify-content: flex-start;
+            height: 100%;  
+        }
+
+        .SkillsText li {
+            font-size: 1.5em;
+            text-align: left;
+            margin-bottom: 12px;
+        }
+
+        /* EXPERIENCES */
+        .experiences {
+            padding: 80px 8%;
+            min-height: 94vh;
+        }
+
+        .experiences h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 40px;
+        }
+
+        .exp-grid {
+            display: grid;
+            grid-template-areas:
+                "left right"
+                "center center";
+            gap: 60px; 
+            justify-content: center;
+            align-items: center;
+        }
+
+        .exp-card {
+            text-align: center;
+        }
+
+        .exp-card img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 20px;
+            display: block;
+            margin: 0 auto 20px;
+        }
+
+        .exp-card strong {
+            font-size: 1.5rem;
+            font-weight: 800;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .exp-card p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #222;
+        }
+
+        .exp-card:nth-child(1) {
+            grid-area: left;
+        }
+
+        .exp-card:nth-child(2) {
+            grid-area: right;
+        }
+
+        .exp-card:nth-child(3) {
+            grid-area: center;
+        }
+
+        /* CONTACTS */
+        .contacts {
+            padding: 60px 8%;
+            background: #823556;
+            border-radius: 0 !important;
+        }
+
+        .contacts h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            color: #000;
+        }
+
+        .contacts-box {
+            background: #d6b9c4;
+            border-radius: 20px;
+            padding: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .contact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-size: 1.2rem;
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .contact-item img.icon {
+            width: 36px;
+            height: 36px;
+            display: block;
+        }
+
+        .qr {
+            text-align: center;
+        }
+
+        .qr img {
+            width: 150px;
+            display: block;
+            margin: 0 auto 8px;
+        }
+
+        .qr p {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        /* back-to-top arrow */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 2.5rem;
+            text-decoration: none;
+            color: #000;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .hero,
+            .about,
+            .skills-content {
+                flex-direction: column;
+                padding: 36px 6%;
+                min-height: unset;
+                gap: 26px;
+            }
+
+            .hero-text,
+            .about-text {
+                max-width: 100%;
+                text-align: center;
+            }
+
+            .hero-text p,
+            .about-text p {
+                margin: 0 auto;
+                max-width: 90%;
+                text-align: center;
+            }
+
+            .divider {
+                margin-left: auto;
+                margin-right: auto;
+                width: 60%;
+            }
+
+            .hero-image {
+                width: 320px;
+                height: 320px;
+            }
+
+            nav ul {
+                gap: 14px;
+            }
+
+            .developer {
+                margin-left: 0;
+            }
+
+            .exp-grid {
+                grid-template-areas:
+                    "left"
+                    "right"
+                    "center";
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="logo">HENN<br>ESSY</div>
+        <nav>
+            <ul>
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#about">ABOUT ME</a></li>
+                <li><a href="#skills">SKILLS</a></li>
+                <li><a href="#experiences">EXPERIENCES</a></li>
+                <li><a href="#contacts">CONTACTS</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="hero-text">
+            <h1>
+                I’m a Full-Spectrum Web<br>
+                <span class="developer">Developer</span>
+            </h1>
+            <div class="divider"></div>
+            <p>
+                I’m Philip Bautista, a Full-Spectrum Web Developer who blends stunning
+                design with powerful functionality to create websites that work
+                flawlessly and leave a lasting impression.
+            </p>
+        </div>
+        <div class="hero-image" aria-hidden="true">
+            <div class="diamond"></div>
+            <img src="your-photo.png" alt="Philip Bautista" />
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+        <div class="about-text">
+            <h2>ABOUT ME</h2>
+            <p>
+                My journey in tech started with curiosity and evolved into a commitment
+                to mastering the craft. I’ve built projects across front-end, back-end,
+                and everything in between, always exploring new tools and best
+                practices. Beyond coding, I bring creativity through UI/UX design,
+                digital media, and problem-solving. For me, development is about
+                creating impactful solutions.
+            </p>
+        </div>
+        <div class="about-image">
+            <img src="Layer_2.png" alt="Design element" />
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="skills" id="skills">
+        <h2>SKILLS</h2>
+        <div class="skills-content">
+            <div class="skills-box">
+                <div class="SkillsText">
+                    <ul>
+                        <li>Network Administration</li>
+                        <li>Systems Administration</li>
+                        <li>Cybersecurity & Data Protection</li>
+                        <li>Cloud Services</li>
+                        <li>Virtualization</li>
+                        <li>Database Administration</li>
+                        <li>IT Project Management</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="skills-box right">
+                <img src="laptop.gif" alt="Laptop" />
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCES -->
+    <section class="experiences" id="experiences">
+        <h2>EXPERIENCES</h2>
+        <div class="exp-grid">
+            <div class="exp-card">
+                <img src="monitor.jpg" alt="Web Development" />
+                <p>
+                    <strong>Web Development</strong>
+                    Built and deployed full-stack web applications with React.js for the
+                    front end and Node.js / Express for the back end.
+                </p>
+            </div>
+            <div class="exp-card">
+                <img src="IT Assistant.jpg" alt="IT Assistant" />
+                <p>
+                    <strong>IT Assistant</strong>
+                    Monitored network performance and reported connectivity issues to the
+                    IT team for quick resolution.
+                </p>
+            </div>
+            <div class="exp-card">
+                <img src="cybersecurity_NicoElNino-AlamyStockPhoto.jpg" alt="Cybersecurity Specialist" />
+                <p>
+                    <strong>Cybersecurity Specialist</strong>
+                    Installed and configured firewalls, intrusion detection/prevention
+                    systems (IDS/IPS), and antivirus solutions.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTS -->
+    <section class="contacts" id="contacts">
+        <h2>CONTACTS</h2>
+        <div class="contacts-box">
+            <div class="contact-list">
+                <div class="contact-item">
+                    <img src="instagram.png" alt="Instagram" class="icon">
+                    <span>@bautistabusiness27</span>
+                </div>
+                <div class="contact-item">
+                    <img src="phone-call.png" alt="Phone" class="icon">
+                    <span>09744836617</span>
+                </div>
+                <div class="contact-item">
+                    <img src="facebook-app-symbol.png" alt="Facebook" class="icon">
+                    <span>@ITbautistabusiness27</span>
+                </div>
+            </div>
+            <div class="qr">
+                <img src="qrcode.png" alt="QR Code">
+                <p>LINK.TREE</p>
+            </div>
+        </div>
+        <a href="#home" class="back-to-top">⬆</a>
+    </section>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
