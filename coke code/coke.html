@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coke Hero Page</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #fff;
+      color: #111;
+      overflow-x: hidden;
+    }
+
+    header {
+      width: 100%;
+      padding: 20px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #e41b17;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    }
+
+    .logo img {
+      width: 100px;
+      height: auto;
+    }
+
+    header ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    header ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    header ul li a:hover {
+      color: #000;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      padding: 140px 8% 60px;
+      min-height: 90vh;
+    }
+
+    .circle {
+      position: absolute;
+      top: 50%;
+      left: 70%;
+      transform: translate(-50%, -50%);
+      width: 500px;
+      height: 500px;
+      background: #e41b17;
+      border-radius: 50%;
+      z-index: 0;
+      transition: all 0.4s ease;
+    }
+
+    .content {
+      flex: 1 1 400px;
+      z-index: 2;
+    }
+
+    .content h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: #000;
+      font-weight: 800;
+      margin-bottom: 0.5em;
+    }
+
+    .content p {
+      font-size: clamp(1rem, 1.3vw, 1.2rem);
+      color: #333;
+      margin-bottom: 1.5em;
+      line-height: 1.6;
+      max-width: 450px;
+    }
+
+    .content button {
+      background: #e41b17;
+      color: #fff;
+      padding: 12px 26px;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .content button:hover {
+      background: #000;
+      color: #fff;
+    }
+
+    .coke-can {
+      width: clamp(200px, 35vw, 400px);
+      z-index: 1;
+      position: relative;
+    }
+
+    /* RESPONSIVE CIRCLE SIZING */
+    @media (max-width: 1024px) {
+      .circle {
+        width: 350px;
+        height: 350px;
+        left: 65%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .circle {
+        width: 250px;
+        height: 250px;
+        left: 50%;
+        top: 45%;
+        opacity: 0.9;
+      }
+
+      .coke-can {
+        width: 60%;
+        margin-top: 30px;
+      }
+
+      .content p {
+        margin: 0 auto 1.5em;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .circle {
+        width: 180px;
+        height: 180px;
+        left: 50%;
+        top: 50%;
+      }
+    }
+
+    /* BOTTLES SECTION */
+    .bottles {
+      padding: 80px 8%;
+      background: #f8f8f8;
+      text-align: center;
+    }
+
+    .bottles h2 {
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      color: #e41b17;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .bottles p {
+      color: #333;
+      font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+      margin-bottom: 40px;
+    }
+
+    .bottle-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 20px;
+      max-width: 300px;
+      flex: 1 1 280px;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      margin-bottom: 12px;
+    }
+
+    .card .tag {
+      display: inline-block;
+      background: #e41b17;
+      color: #fff;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      margin-bottom: 8px;
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #444;
+      margin-bottom: 12px;
+    }
+
+    .card button {
+      background: #e41b17;
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: 700;
+      transition: 0.3s;
+    }
+
+    .card button:hover {
+      background: #000;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="#" class="logo"><img src="coke.jpg" alt="Coca-Cola Logo"></a>
+    <ul>
+      <li><a href="">Home</a></li>
+      <li><a href="">Menu</a></li>
+      <li><a href="">What's New</a></li>
+      <li><a href="">Contact</a></li>
+    </ul>
+  </header>
+
+  <section class="hero">
+    <div class="circle"></div>
+    <div class="content">
+      <h1>Refresh Your Day</h1>
+      <p>Experience the real taste of Coca-Cola. Open happiness with every sip.</p>
+      <button>Order Now</button>
+    </div>
+    <img src="coke.png" alt="Coke Can" class="coke-can">
+  </section>
+
+  <section class="bottles">
+    <h2>Coca-Cola Bottle Evolution</h2>
+    <p>From vintage glass to today’s modern contour.</p>
+    <div class="bottle-cards">
+      <div class="card">
+        <img src="bottle1.png.jpg" alt="Vintage Glass Bottle">
+        <span class="tag">Old — Early 1900s</span>
+        <h3>Vintage Glass Bottle</h3>
+        <p>Heavy glass, straight-sided beginnings evolving toward the iconic shape. Embossed logos and crown caps defined the earliest Coca-Cola packaging era.</p>
+        <button>View Details</button>
+      </div>
+
+      <div class="card">
+        <img src="bottle21.jpg" alt="Classic Contour Glass">
+        <span class="tag">Classic — Mid 1900s</span>
+        <h3>Classic Contour Glass</h3>
+        <p>The famous hourglass silhouette becomes standard. Durable glass and a tactile feel made it a worldwide icon.</p>
+        <button>View Details</button>
+      </div>
+
+      <div class="card">
+        <img src="bottle3.jpg" alt="Modern PET Contour">
+        <span class="tag">Modern — Today</span>
+        <h3>Modern PET Contour</h3>
+        <p>Lightweight PET keeps the iconic contour while improving portability. Updated labels and closures deliver a fresh, contemporary look.</p>
+        <button>View Details</button>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
+
+
+
+
+
+
